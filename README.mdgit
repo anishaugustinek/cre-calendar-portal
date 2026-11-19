@@ -1,0 +1,1 @@
+"# cre-calendar-portal"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/anishaugustinek/cre-calendar-portal.gitgit push -u origin main
