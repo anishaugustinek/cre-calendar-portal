@@ -1,12 +1,31 @@
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>CRE Calendar Portal</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Download the latest available RCI CRE programme calendar.">
+<title>CRE Calendar Portal</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>CRE Calendar Portal</h1>
-    <p>RCI CRE Programme Calendar</p>
-    <p>Website successfully deployed!</p>
-</body>
-</html>
+<header><div class="wrap brand"><div class="logo">CRE</div><div><strong>CRE Calendar Portal</strong><small>Continuing Rehabilitation Education Programmes</small></div></div></header>
+<main class="wrap">
+<section class="intro"><p class="eyebrow">PROGRAMME INFORMATION</p><h1>RCI CRE Programme Calendar</h1>
+<p class="lead">Access the latest calendar entries collected from the publicly accessible Rehabilitation Council of India CRE Calendar webpage.</p></section>
+<section class="download">
+<div class="file">XLSX</div><div class="copy"><h2>Complete CRE Calendar</h2><p>Download available programme entries in Excel format.</p><p id="meta" class="meta">Checking the latest published file…</p></div>
+<a class="button" href="downloads/RCI_CRE_Calendar.xlsx" download>↓ &nbsp; Download Excel</a>
+</section>
+<section class="notice"><h2>Important information</h2><ul>
+<li>This is an independently maintained convenience resource, not an official RCI website.</li>
+<li>Source: <a href="https://rciregistration.nic.in/rehabcouncil/CreCalendarnew.jsp" target="_blank" rel="noopener">official RCI CRE Calendar</a>.</li>
+<li>Entries are automatically collected. Verify dates, venue, eligibility, CRE points and registration status with RCI or the organising institution before making plans.</li>
+<li>Updates depend on the source website and scheduled collection process.</li>
+</ul></section>
+<footer>Independent information resource · Not affiliated with or endorsed by RCI</footer>
+</main>
+<script>
+fetch("downloads/metadata.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.json()})
+.then(d=>{const date=d.updated_at?new Date(d.updated_at).toLocaleString():"Not available";
+document.getElementById("meta").textContent=`Last successful update: ${date} · ${d.record_count ?? "?"} records`;})
+.catch(()=>document.getElementById("meta").textContent="Update information temporarily unavailable.");
+</script>
+</body></html>
